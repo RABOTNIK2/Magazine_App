@@ -1,0 +1,15 @@
+.text{
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    font:
+    italic 2em 'Open Sans',
+    sans-serif;
+}
+.number{
+    font:
+    italic 2em 'Open Sans',
+    sans-serif;
+    font-size: 25px;
+    margin-top: 10px;
+}

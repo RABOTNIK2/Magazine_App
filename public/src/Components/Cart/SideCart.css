@@ -1,0 +1,98 @@
+.Overflow{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 3;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.SideBlock{
+    width: 25%;
+    max-width: 100%;
+    height: 100vh;
+    background-color: #172333;
+    position: fixed;
+    z-index: 4;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    transition: 0.5s;
+}
+#topCart{
+    margin: 30px;
+}
+.CartItems{
+    display: flex;
+    flex-direction: column;
+}
+.CartItem{
+    display: flex;
+    margin: 25px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    position: relative;
+    width: 325px;
+    height: 140px;
+    background-color:white;
+}
+.CartItem #CartItemImg{
+    height: 70px;
+    width: 70px;
+    align-self: center;
+    margin: 10px;
+    border-radius:30px ;
+}
+.CartItem .ItemText{
+    width: 150px;
+    margin: 24px;
+}
+.CartItem .RemoveButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.CountButtons input{
+    width: 60px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.CountButtons{
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    right: 0;
+}
+#poleno{
+    color:white;
+}
+.pizdec{
+    bottom: 0;
+}
+.content{
+    margin-left:30px;
+    padding-bottom:30px;
+    color:#DFDFDF;
+}
+#cool{
+    margin-top: 5px;
+    width: 292px;
+    border-radius:1000px;
+    align-self:center;
+}
+#puki{
+    margin-top:284px;
+}
+#kaki{
+    flex-direction: column-reverse;
+    text-align: center;
+    color:#DFDFDF;
+    background-color:#172333;
+    border:0;
+}
+#zabiyki{
+    width: 83px;
+    height: 120px;
+    align-self: center;
+}

@@ -1,0 +1,9 @@
+.container{
+    margin-top: 15px;
+}
+.otzvhead{
+    display: flex;
+    justify-content: center;
+    font: italic 2em 'Open Sans',
+    sans-serif;
+}

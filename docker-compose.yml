@@ -1,0 +1,69 @@
+version: '3.9'
+x-environment-defaults: &environment-defaults
+  SECRET_KEY: "django-insecure-*%&a-^nw%b!c!op0%t5qq#t@y^y^m=(3b_c%i3)3_q6*^a%5m4"
+  DEBUG_DEV: "True"
+  DEBUG_PROD: "False"
+  DB_NAME: "magazine"
+  DB_USER: "magazine"
+  DB_PASSWORD: "magazine"
+  DB_HOST: "postgres-db"
+  DB_PORT: 5432
+
+services:
+  postgres-db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: magazine
+      POSTGRES_PASSWORD: magazine
+      POSTGRES_DB: magazine
+    ports:
+      - "5432:5432"
+
+  magazine:
+    build:
+      context: ./navos
+    ports:
+    - "8001:8000"
+    depends_on:
+      - postgres-db
+    # env_file: "/app/.env" 
+    restart: on-failure:5
+    healthcheck:
+      test: curl -f http://127.0.0.1:8001/magazine_api/category/ || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  magazine-react:
+    build:
+      context: ./public
+    ports:
+      - "3000:3000"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"  
+
+  celery:
+    build:
+      context: ./navos
+    command: celery -A navos worker --loglevel=info
+    depends_on:
+      - redis
+      - postgres-db
+    environment:
+      <<: *environment-defaults
+
+  celery-beat:
+    build:
+      context: ./navos
+    command: celery -A navos beat --loglevel=info
+    depends_on:
+      - redis
+      - postgres-db
+    environment:
+      <<: *environment-defaults
+
